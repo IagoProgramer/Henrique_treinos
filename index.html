@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henrique_treinos - Sistema de Gerenciamento de Treinos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="landing-page">
+        <nav class="landing-nav">
+            <div class="brand">Henrique_treinos</div>
+            <div class="login-trigger">Entrar</div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Transforme seus <span>objetivos</span> em conquistas</h1>
+                <p>Gerencie seus treinos de forma inteligente, acompanhe seu progresso e alcance resultados extraordinários.</p>
+                <button class="login-trigger">Começar Agora</button>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Por que escolher Henrique_treinos?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-dumbbell feature-icon"></i>
+                    <h3>Biblioteca de Exercícios</h3>
+                    <p>Acesso a uma vasta coleção de exercícios com descrições detalhadas.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tasks feature-icon"></i>
+                    <h3>Gestão de Treinos</h3>
+                    <p>Crie e organize seus treinos de forma simples e eficiente.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3>Acompanhamento</h3>
+                    <p>Monitore seu progresso e evolua constantemente.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de Login -->
+    <div class="modal-overlay">
+        <div class="login-modal">
+            <div class="site-logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+                </svg>
+            </div>
+            <h2>Bem-vindo de volta</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Usuário" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Senha" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+            <p>Não tem uma conta? <span id="open-register">Crie uma agora</span></p>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal-overlay hidden" id="register-modal">
+        <div class="login-modal">
+            <h2>Crie sua Conta</h2>
+            <form id="register-form">
+                <div class="input-group">
+                    <input type="text" id="register-nome" placeholder="Nome" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="register-email" placeholder="E-mail" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="register-senha" placeholder="Senha" required>
+                </div>
+                <button type="submit">Criar Conta</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-container" class="container hidden">
+        <nav>
+            <h1>Henrique_treinos</h1>
+            <button id="logout-btn">Sair</button>
+        </nav>
+        <div class="dashboard">
+            <div class="menu">
+                <button class="menu-btn active" data-section="treinos">Treinos</button>
+                <button class="menu-btn" data-section="exercicios">Exercícios</button>
+                <button class="menu-btn" data-section="historico">Histórico</button>
+            </div>
+            
+            <div id="treinos" class="section">
+                <h2>Meus Treinos</h2>
+                <button id="add-treino">+ Novo Treino</button>
+                <div id="treinos-list" class="list"></div>
+            </div>
+
+            <div id="exercicios" class="section hidden">
+                <h2>Catálogo de Exercícios</h2>
+                <button id="add-exercicio">+ Novo Exercício</button>
+                <div id="exercicios-list" class="list"></div>
+            </div>
+
+            <div id="historico" class="section hidden">
+                <h2>Registro de Treino Diário</h2>
+                <div class="register-treino-form">
+                    <div class="input-group">
+                        <label>Selecione o Treino:</label>
+                        <select id="treino-select">
+                            <option value="">Escolha um treino</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Tempo de Treino (minutos):</label>
+                        <input type="number" id="tempo-treino" min="1" value="60">
+                    </div>
+                    <div class="input-group">
+                        <label>Observações:</label>
+                        <textarea id="observacoes-treino" placeholder="Adicione observações sobre seu treino..."></textarea>
+                    </div>
+                    <button id="register-treino" class="add-button">
+                        <i class="fas fa-plus"></i>
+                        Registrar Treino
+                    </button>
+                </div>
+                
+                <h2>Histórico de Treinos</h2>
+                <div id="historico-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./script/app.js"></script>
+    <script type="module" src="./script/config.js"></script>
+</body>
+</html>

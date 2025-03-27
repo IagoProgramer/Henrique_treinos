@@ -1,0 +1,760 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1a1a1a;
+    --secondary: #00c3ff;
+    --accent: #005f7f;
+    --background: #121212;
+    --text: #ffffff;
+    --text-secondary: #888888;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --gradient: linear-gradient(135deg, #00c3ff, #005f7f);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.landing-page {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.landing-nav {
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.brand {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.login-trigger {
+    padding: 10px 25px;
+    background: var(--gradient);
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.login-trigger:hover {
+    transform: translateY(-2px);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: slideIn 1s ease-out;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--secondary);
+    display: block;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.features {
+    padding: 100px 10%;
+    background: var(--primary);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    color: var(--secondary);
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.login-modal {
+    background: var(--primary);
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(50px);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active .login-modal {
+    transform: translateY(0);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--gradient);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Login Styles */
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+}
+
+.login-box h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--primary);
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.site-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.site-logo svg {
+    width: 80px;
+    height: 80px;
+    fill: var(--secondary);
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.input-group input:focus {
+    border-color: var(--secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    padding: 15px 25px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Dashboard Styles */
+nav {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+nav h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.dashboard {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(26, 26, 26, 0.95));
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 195, 255, 0.1);
+}
+
+.menu {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.menu-btn {
+    background: transparent;
+    color: var(--primary);
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-btn.active {
+    background: var(--gradient);
+    color: white;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 195, 255, 0.05);
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 195, 255, 0.1);
+}
+
+.section h2 {
+    color: var(--secondary);
+    font-size: 2em;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 3px;
+}
+
+.list {
+    margin-top: 25px;
+    display: grid;
+    gap: 15px;
+}
+
+.list-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 195, 255, 0.1);
+    margin-bottom: 15px;
+    color: var(--text);
+}
+
+.list-item:hover {
+    transform: translateX(5px);
+    background: rgba(0, 195, 255, 0.05);
+    border-color: var(--secondary);
+}
+
+.list-item-info {
+    flex: 1;
+}
+
+.list-item-info strong {
+    font-size: 1.2em;
+    color: var(--secondary);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.list-item-info p {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.list-item-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.list-item-actions button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.list-item-actions button:hover {
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+.exercicio-details {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 195, 255, 0.1);
+}
+
+.exercicio-details h4 {
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.exercicio-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.exercicio-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 195, 255, 0.1);
+}
+
+.add-button {
+    background: var(--gradient);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-button i {
+    font-size: 1.2em;
+}
+
+.add-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 195, 255, 0.2);
+}
+
+.exercicio-selector-modal {
+    background: var(--primary);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.exercicio-selector-modal h3 {
+    color: var(--secondary);
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.exercicio-selector-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.exercicio-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-size: 1em;
+}
+
+.exercicio-config {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.exercicio-config .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.exercicio-config label {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.exercicio-config input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.confirm-btn, .cancel-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.confirm-btn {
+    background: var(--gradient);
+    color: white;
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+.remove-btn {
+    background: transparent;
+    border: none;
+    color: var(--secondary);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 0.8em;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.exercicio-item {
+    position: relative;
+    padding-right: 25px;
+}
+
+.historico-semana {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.historico-semana h3 {
+    color: var(--secondary);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.historico-registros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.historico-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.historico-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 195, 255, 0.1);
+}
+
+.historico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.historico-header strong {
+    color: var(--secondary);
+    font-size: 1.1em;
+}
+
+.historico-header span {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.historico-info {
+    margin-bottom: 15px;
+}
+
+.historico-info p {
+    color: var(--text-secondary);
+    margin: 5px 0;
+}
+
+.btn-detalhes {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-detalhes:hover {
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+.historico-detalhes-modal {
+    background: var(--primary);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.historico-detalhes-modal h3 {
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
+.exercicios-realizados {
+    margin-top: 20px;
+}
+
+.exercicio-realizado {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.register-treino-form {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(0, 195, 255, 0.1);
+}
+
+.register-treino-form .input-group {
+    margin-bottom: 20px;
+}
+
+.register-treino-form label {
+    display: block;
+    color: var(--secondary);
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.register-treino-form select,
+.register-treino-form input,
+.register-treino-form textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.register-treino-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.register-treino-form select:focus,
+.register-treino-form input:focus,
+.register-treino-form textarea:focus {
+    border-color: var(--secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 195, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 15px;
+    }
+    
+    .section {
+        padding: 20px;
+    }
+    
+    .list-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .list-item-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+    
+    .list-item-actions button {
+        flex: 1;
+    }
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none; 
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-overlay.active {
+        display: flex; 
+    }
+    
+    .login-modal {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 300px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .input-group {
+        margin: 10px 0;
+    }
+    
+    .input-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background: #0056b3;
+    }
+        .hidden {
+        display: none;
+    }
+}
